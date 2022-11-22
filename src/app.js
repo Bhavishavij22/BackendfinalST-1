@@ -59,7 +59,7 @@ app.post("/register", async (req, res) => {
 });
 
 
-app.post("/login", async (req,res) => {
+app.post("/login", async (req,res) => {// routing http request and sending the input data in form and saving it as object in a variable.
   try{
     const email = req.body.email;
     const password = req.body.password;
@@ -68,13 +68,13 @@ app.post("/login", async (req,res) => {
     const usermail = await Register.findOne({email:email});
 
     if(usermail.password===password){
-      res.status(201).send("Successful login");
+      res.status(201).send("Successful login");//after successful request save the data and then send Successful login..
     }else{
-      res.send("Invalid password");
+      res.send("Invalid password");// if passwords do not match then send a error message..
     }
 
   } catch(error){
-    res.status(400).send("Invalid email");
+    res.status(400).send("Invalid email"); // if callback failed then send error 400.
   }
 });
 
